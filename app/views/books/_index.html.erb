@@ -7,12 +7,12 @@
 					<td><%= book.body %></td>
 					<td>
 						<% if book.favorited_by?(current_user) %>
-							<%= link_to book_favorites_path(book), method: :delete do %>
+							<%= link_to book_favorites_path(book), method: :delete, remote: true do %>
 								<i class="fas fa-kiss-wink-heart", style='color:pink'></i>
 								<%= book.favorites.count%>
 							<% end %>
 						<% else %>
-							<%= link_to book_favorites_path(book), method: :post do %>
+							<%= link_to book_favorites_path(book), method: :post, remote: true do %>
 								<i class="far fa-kiss-wink-heart"></i>
 								<%= book.favorites.count%>
 							<% end %>
