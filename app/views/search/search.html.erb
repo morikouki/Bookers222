@@ -1,0 +1,41 @@
+<% if @user_or_book == "1" %>
+	<h2>Users search for '<%= params[:search] %>'</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Introduction</th>
+			</tr>
+		</thead>
+		<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<th><%= attachment_image_tag(user, :profile_image, :fill, 60, 60, fallback: 'no-image-mini.jpg') %></th>
+				<th><%= user.name %></th>
+				<th><%= user.introduction %></th>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+<% else %>
+	<h2>Books search for '<%= params[:search] %>'</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Title</th>
+				<th>Opinion</th>
+			</tr>
+		</thead>
+		<tbody>
+		<% @books.each do |book| %>
+			<tr>
+				<th><%= attachment_image_tag(book.user, :profile_image, :fill, 60, 60, fallback: 'no-image-mini.jpg') %></th>
+				<th><%= book.title %></th>
+				<th><%= book.body %></th>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+<% end %>
